@@ -1,8 +1,10 @@
-import Vue from 'vue'
 import Vuex from 'vuex'
+import { name } from '../../../../package.json'
 
-export default new Vuex.Store({
-    state: {
-        name: 'vuex-action-patcher'
-    }
-})
+export default function () {
+    return new Vuex.Store({
+        state: {
+            name
+        }
+    })
+}

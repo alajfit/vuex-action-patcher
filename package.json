@@ -13,8 +13,8 @@
         "build": "npm run build:browser && npm run build:es && npm run build:umd",
         "docs:dev": "vuepress dev docs",
         "docs:build": "vuepress build docs",
-        "docs:deploy": "gh-pages -d dist",
-        "demo": "",
+        "docs:deploy": "gh-pages -d docs/.vuepress/dist",
+        "demo": "cd ./test/app && npm run dev",
         "lint": "eslint --ext .js src",
         "release": "release-it"
     },
