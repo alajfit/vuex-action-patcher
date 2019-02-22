@@ -1,0 +1,19 @@
+{
+    "compilerOptions": {
+        "target": "es2015",
+        "module": "es2015",
+        "strict": true,
+        "jsx": "preserve",
+        "moduleResolution": "node",
+        "allowSyntheticDefaultImports": true,
+        "sourceMap": true,
+        "baseUrl": ".",
+        "types": ["node"],
+        "lib": ["dom", "es5", "es2015", "es2015.core", "es2017.object", "es2016.array.include"],
+        "paths": {
+            "@/*": ["src/*"]
+        }
+    },
+    "include": ["src/**/*.ts", "src/**/*.vue", "test/**/*.ts"],
+    "exclude": ["node_modules"]
+  }
