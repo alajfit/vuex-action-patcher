@@ -1,4 +1,35 @@
 {
     "name": "vuex-action-patcher",
-    "version": "1.0.0"
+    "version": "1.0.0",
+    "description": "Vuex - Add tools to the Action context",
+    "main": "dist/vuex-action-patcher.umd.js",
+    "module": "dist/vuex-action-patcher.esm.js",
+    "unpkg": "dist/vuex-action-patcher.min.js",
+    "scripts": {
+        "boot": "",
+        "build:browser": "parcel build src/index.ts --out-dir dist --out-file vuex-apollo.min.js --target browser",
+        "build:es": "parcel build src/index.ts --out-dir dist --out-file vuex-apollo.esm.js --target electron",
+        "build:umd": "parcel build src/index.ts --out-dir dist --out-file vuex-apollo.umd.js --target node",
+        "build": "npm run build:browser && npm run build:es && npm run build:umd"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/alajfit/vuex-action-patcher.git"
+    },
+    "keywords": [
+        "vue",
+        "vuex",
+        "vuex-plugin"
+    ],
+    "author": "Alan J. Fitzpatrick <alajfit@gmail.com>",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/alajfit/vuex-action-patcher/issues"
+    },
+    "homepage": "https://github.com/alajfit/vuex-action-patcher#readme",
+    "devDependencies": {
+        "gh-pages": "^2.0.1",
+        "parcel-bundler": "^1.11.0",
+        "typescript": "^3.3.3333"
+    }
 }
