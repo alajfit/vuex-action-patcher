@@ -10,7 +10,13 @@
         "build:browser": "parcel build src/index.ts --out-dir dist --out-file vuex-apollo.min.js --target browser",
         "build:es": "parcel build src/index.ts --out-dir dist --out-file vuex-apollo.esm.js --target electron",
         "build:umd": "parcel build src/index.ts --out-dir dist --out-file vuex-apollo.umd.js --target node",
-        "build": "npm run build:browser && npm run build:es && npm run build:umd"
+        "build": "npm run build:browser && npm run build:es && npm run build:umd",
+        "docs:dev": "vuepress dev docs",
+        "docs:build": "vuepress build docs",
+        "docs:deploy": "gh-pages -d dist",
+        "demo": "",
+        "lint": "eslint --ext .js src",
+        "release": "release-it"
     },
     "repository": {
         "type": "git",
