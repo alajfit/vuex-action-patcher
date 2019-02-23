@@ -19,6 +19,12 @@ I found making tools available to the Vuex action context could be handy for num
 
 ## Install
 
-```
+```bash
 npm install vuex-action-patcher --save
+```
+
+## Usage
+
+```bash
+
 ```
