@@ -15,7 +15,7 @@ export default function patchModule ({
         handler: action,
         local
     }))
-    module.forEachChild((child, key) => patchModule({ 
+    module.forEachChild((child, key) => patchModule({
         store,
         path: path.concat(key),
         module: child,
