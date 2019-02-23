@@ -10012,7 +10012,7 @@ render._withStripped = true
 },{"vuex":"../../node_modules/vuex/dist/vuex.esm.js","_css_loader":"../../node_modules/parcel-bundler/src/builtins/css-loader.js","vue-hot-reload-api":"../../node_modules/vue-hot-reload-api/dist/index.js","vue":"../../node_modules/vue/dist/vue.runtime.esm.js"}],"../../package.json":[function(require,module,exports) {
 module.exports = {
   "name": "vuex-action-patcher",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "Vuex - Add tools to the Action context",
   "main": "dist/vuex-action-patcher.umd.js",
   "module": "dist/vuex-action-patcher.esm.js",
@@ -10061,18 +10061,17 @@ module.exports = {
     "gh-pages": "^2.0.1",
     "jest": "^24.1.0",
     "lint-staged": "^8.1.4",
+    "moment": "^2.24.0",
     "parcel-bundler": "^1.11.0",
     "release-it": "^10.1.0",
     "sass": "^1.17.2",
-    "vue-template-compiler": "^2.6.7",
-    "yorkie": "^2.0.0"
-  },
-  "dependencies": {
-    "moment": "^2.24.0",
     "vue": "^2.6.7",
     "vue-hot-reload-api": "^2.3.3",
-    "vuex": "^3.1.0"
-  }
+    "vue-template-compiler": "^2.6.7",
+    "vuex": "^3.1.0",
+    "yorkie": "^2.0.0"
+  },
+  "dependencies": {}
 };
 },{}],"../../src/utils/isPromise/index.js":[function(require,module,exports) {
 "use strict";
@@ -14858,7 +14857,7 @@ var _moment = _interopRequireDefault(require("moment"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var tools = (0, _src.default)(_vuex.default, {
+var vuexActionPatch = (0, _src.default)(_vuex.default, {
   moment: _moment.default
 });
 
@@ -14881,7 +14880,7 @@ function _default() {
         state.timeSinceStartOfDay = payload;
       }
     },
-    plugins: [tools]
+    plugins: [vuexActionPatch]
   });
 }
 },{"vuex":"../../node_modules/vuex/dist/vuex.esm.js","../../../../package.json":"../../package.json","../../../../src":"../../src/index.js","moment":"../../node_modules/moment/moment.js"}],"src/main.js":[function(require,module,exports) {
@@ -14934,7 +14933,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "62234" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "49595" + '/');
 
   ws.onmessage = function (event) {
     var data = JSON.parse(event.data);
