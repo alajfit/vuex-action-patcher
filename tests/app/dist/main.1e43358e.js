@@ -10024,6 +10024,9 @@ module.exports = {
     "test": "rm -rf test/unit/coverage && jest --config=test/unit/jest.config.js",
     "release": "release-it"
   },
+  "gitHooks": {
+    "pre-commit": "lint-staged"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/alajfit/vuex-action-patcher.git"
@@ -10050,6 +10053,7 @@ module.exports = {
     "eslint-plugin-standard": "^4.0.0",
     "gh-pages": "^2.0.1",
     "jest": "^24.1.0",
+    "lint-staged": "^8.1.4",
     "parcel-bundler": "^1.11.0",
     "sass": "^1.17.2",
     "vue-template-compiler": "^2.6.7"
