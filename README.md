@@ -1,2 +1,15 @@
-# vuex-action-patcher
-Add Tools to your Action Context
+# Vuex Action Patcher (Adding Tools to Your Context)
+> Add tools to your Vuex action context
+
+[![Build Status](https://travis-ci.org/alajfit/vuex-action-patcher.svg?branch=master)](https://travis-ci.org/alajfit/vuex-action-patcher)
+
+<p align="center">
+    <img width="200" height="200" src="./docs/assets/vue.svg" />
+    <img width="200" height="200" src="./docs/assets/action.png" />
+</p>
+
+## Install
+
+```
+npm install vuex-apollo --save
+```
