@@ -25,8 +25,12 @@ jobs:
       install: travis_wait npm ci --verbose
       script: npm run lint
     - name: 'Test ➔ Unit'
-      install: travis_wait npm ci --verbose
-      script: npm run test
+      install: 
+        - travis_wait npm ci --verbose
+        - npm install -g codecov
+      script: 
+        - npm run test
+        - codecov
     - name: 'Test ➔ Build'
       install: travis_wait npm ci --verbose
       script: npm run build

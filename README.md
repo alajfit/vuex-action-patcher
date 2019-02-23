@@ -8,6 +8,14 @@
     <img width="150" height="160" src="./docs/assets/action.png" />
 </p>
 
+## Motivation
+
+I found making tools available to the Vuex action context could be handy for numerous reasons. The library is designed for you to pass the same toolset to all actions from within the context.
+
+* add tools to all actions
+* add tools to actions within registered modules
+* keep consistent tooling across all actions
+
 ## Install
 
 ```
