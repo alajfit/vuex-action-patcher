@@ -7,15 +7,16 @@
     "unpkg": "dist/vuex-action-patcher.min.js",
     "scripts": {
         "boot": "rm -rf node_modules test/app/node_modules && npm i && cd ./test/app && npm i",
-        "build:browser": "parcel build src/index.ts --out-dir dist --out-file vuex-apollo.min.js --target browser",
-        "build:es": "parcel build src/index.ts --out-dir dist --out-file vuex-apollo.esm.js --target electron",
-        "build:umd": "parcel build src/index.ts --out-dir dist --out-file vuex-apollo.umd.js --target node",
+        "build:browser": "parcel build src/index.js --out-dir dist --out-file vuex-action-patcher.min.js --target browser",
+        "build:es": "parcel build src/index.js --out-dir dist --out-file vuex-action-patcher.esm.js --target electron",
+        "build:umd": "parcel build src/index.js --out-dir dist --out-file vuex-action-patcher.umd.js --target node",
         "build": "npm run build:browser && npm run build:es && npm run build:umd",
         "docs:dev": "vuepress dev docs",
         "docs:build": "vuepress build docs",
         "docs:deploy": "gh-pages -d docs/.vuepress/dist",
         "demo": "cd ./test/app && npm run dev",
-        "lint": "eslint --ext .ts src",
+        "lint": "eslint --ext .js src",
+        "test": "rm -rf test/unit/coverage && jest --config=test/unit/jest.config.js",
         "release": "release-it"
     },
     "repository": {
@@ -34,10 +35,17 @@
     },
     "homepage": "https://github.com/alajfit/vuex-action-patcher#readme",
     "devDependencies": {
-        "@typescript-eslint/parser": "^1.4.0",
+        "babel-eslint": "^10.0.1",
+        "babel-jest": "^24.1.0",
         "eslint": "^5.14.1",
+        "eslint-config-standard": "^12.0.0",
+        "eslint-plugin-import": "^2.16.0",
+        "eslint-plugin-node": "^8.0.1",
+        "eslint-plugin-promise": "^4.0.1",
+        "eslint-plugin-standard": "^4.0.0",
         "gh-pages": "^2.0.1",
-        "parcel-bundler": "^1.11.0",
-        "typescript": "^3.3.3333"
-    }
+        "jest": "^24.1.0",
+        "parcel-bundler": "^1.11.0"
+    },
+    "dependencies": {}
 }

@@ -24,3 +24,9 @@ jobs:
       name: 'Test ➔ Lint'
       install: travis_wait npm ci --verbose
       script: npm run lint
+    - name: 'Test ➔ Unit'
+      install: travis_wait npm ci --verbose
+      script: npm run test
+    - name: 'Test ➔ Build'
+      install: travis_wait npm ci --verbose
+      script: npm run build
