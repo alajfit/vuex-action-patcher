@@ -5,13 +5,14 @@ module.exports = {
   transform: {
     '^.+\\.js$': 'babel-jest'
   },
-  moduleDirectories: ['node_modules'],
+  moduleDirectories: ['node_modules', 'src'],
   verbose: true,
   collectCoverage: true,
   setupFiles: ['<rootDir>/test/unit/setup'],
   coverageDirectory: 'test/unit/coverage/',
   collectCoverageFrom: [
-    '**/*.{js}',
+    'src/**/*.js',
+    '!src/**/*.test.js',
     '!**/node_modules/**',
     '!**/test/**'
   ],

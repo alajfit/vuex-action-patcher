@@ -17,6 +17,7 @@ branches:
 
 stages:
   - test
+  - documentation
 
 jobs:
   include:
@@ -34,3 +35,10 @@ jobs:
     - name: 'Test ➔ Build'
       install: travis_wait npm ci --verbose
       script: npm run build
+
+    - stage: documentation
+      name: 'Documentation ➔ Deploy'
+      install: travis_wait npm ci --verbose
+      script:
+        - npm run docs:build
+        - npm run docs:deploy
