@@ -1,6 +1,6 @@
 {
     "name": "vuex-action-patcher",
-    "version": "0.0.0",
+    "version": "0.0.1",
     "description": "Vuex - Add tools to the Action context",
     "main": "dist/vuex-action-patcher.umd.js",
     "module": "dist/vuex-action-patcher.esm.js",
