@@ -1,9 +1,9 @@
 # Vuex Action Patcher (Adding Tools to Your Context)
-> Add tools to your Vuex action context
-
 [![Build Status](https://travis-ci.org/alajfit/vuex-action-patcher.svg?branch=master)](https://travis-ci.org/alajfit/vuex-action-patcher)
 [![codecov](https://codecov.io/gh/alajfit/vuex-action-patcher/branch/master/graph/badge.svg)](https://codecov.io/gh/alajfit/vuex-action-patcher)
 [![npm](https://img.shields.io/npm/v/vuex-action-patcher.svg) ![npm](https://img.shields.io/npm/dm/vuex-action-patcher.svg)](https://www.npmjs.com/package/vuex-action-patcher)
+
+> Add tools to your Vuex action context
 
 <p align="center">
     <img width="200" height="200" src="./docs/assets/vue.svg" />
