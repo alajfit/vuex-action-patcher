@@ -5,7 +5,7 @@
 
 <p align="center">
     <img width="200" height="200" src="./docs/assets/vue.svg" />
-    <img width="200" height="200" src="./docs/assets/action.png" />
+    <img width="150" height="160" src="./docs/assets/action.png" />
 </p>
 
 ## Install
