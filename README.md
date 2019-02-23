@@ -58,6 +58,45 @@ new Vue({
 })
 ```
 
+### Use with Dynamic Modules
+> main.js
+```js
+import Vue from 'vue'
+import Vuex from 'vuex'
+import App from './App.vue'
+import vuexActionPatcher from 'vuex-action-patcher'
+import { name } from '../package.json'
+import moment from 'moment'
+
+Vue.use(Vuex)
+
+const tools = vuexActionPatcher(Vuex, { moment })
+
+const store = new Vuex.Store({
+  plugins: [tools]
+})
+
+new Vue({
+  el: '#app',
+  store,
+  render: h => h(App)
+})
+```
+
+> later.js
+```js
+store.registerModule('myModule', {
+  state: {
+    name: 'myModule'
+  },
+  actions: {
+    getTime ({ moment }) {
+      console.log(moment().calendar())
+    }
+  }
+})
+```
+
 ### Use in a Nuxt App
 > Under `store/index.js`
 ```js
