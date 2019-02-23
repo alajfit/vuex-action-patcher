@@ -2,6 +2,7 @@
 > Add tools to your Vuex action context
 
 [![Build Status](https://travis-ci.org/alajfit/vuex-action-patcher.svg?branch=master)](https://travis-ci.org/alajfit/vuex-action-patcher)
+[![codecov](https://codecov.io/gh/alajfit/vuex-action-patcher/branch/master/graph/badge.svg)](https://codecov.io/gh/alajfit/vuex-action-patcher)
 
 <p align="center">
     <img width="200" height="200" src="./docs/assets/vue.svg" />
