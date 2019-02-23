@@ -10071,7 +10071,10 @@ module.exports = {
     "vuex": "^3.1.0",
     "yorkie": "^2.0.0"
   },
-  "dependencies": {}
+  "peerDependencies": {
+    "vue": "2.x",
+    "vuex": "3.x"
+  }
 };
 },{}],"../../src/utils/isPromise/index.js":[function(require,module,exports) {
 "use strict";
@@ -14933,7 +14936,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "49595" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "50909" + '/');
 
   ws.onmessage = function (event) {
     var data = JSON.parse(event.data);
