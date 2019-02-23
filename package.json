@@ -6,7 +6,7 @@
     "module": "dist/vuex-action-patcher.esm.js",
     "unpkg": "dist/vuex-action-patcher.min.js",
     "scripts": {
-        "boot": "rm -rf node_modules test/app/node_modules && npm i && cd ./test/app && npm i",
+        "boot": "rm -rf node_modules && npm i",
         "build:browser": "parcel build src/index.js --out-dir dist --out-file vuex-action-patcher.min.js --target browser",
         "build:es": "parcel build src/index.js --out-dir dist --out-file vuex-action-patcher.esm.js --target electron",
         "build:umd": "parcel build src/index.js --out-dir dist --out-file vuex-action-patcher.umd.js --target node",
@@ -54,14 +54,17 @@
         "jest": "^24.1.0",
         "lint-staged": "^8.1.4",
         "moment": "^2.24.0",
+        "node-sass": "^4.11.0",
         "parcel-bundler": "^1.11.0",
         "release-it": "^10.1.0",
         "sass": "^1.17.2",
+        "sass-loader": "^7.1.0",
         "vue": "^2.6.7",
         "vue-hot-reload-api": "^2.3.3",
         "vue-template-compiler": "^2.6.7",
-        "vuepress": "1.0.0-alpha.39",
+        "vuepress": "^0.14.8",
         "vuex": "^3.1.0",
+        "webpack": "4.28.4",
         "yorkie": "^2.0.0"
     },
     "peerDependencies": {
