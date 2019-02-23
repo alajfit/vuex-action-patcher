@@ -26,6 +26,65 @@ npm install vuex-action-patcher --save
 
 ## Usage
 
-```bash
+### Use in a Vue App
+```js
+import Vue from 'vue'
+import Vuex from 'vuex'
+import App from './App.vue'
+import vuexActionPatcher from 'vuex-action-patcher'
+import { name } from '../package.json'
+import moment from 'moment'
 
+Vue.use(Vuex)
+
+const tools = vuexActionPatcher(Vuex, { moment })
+
+const store = new Vuex.Store({
+  state: {
+    name
+  },
+  actions: {
+    getTime ({ moment }) {
+      console.log(moment().calendar())
+    }
+  },
+  plugins: [tools]
+})
+
+new Vue({
+  el: '#app',
+  store,
+  render: h => h(App)
+})
+```
+
+### Use in a Nuxt App
+> Under `store/index.js`
+```js
+import Vuex from 'vuex'
+import vuexActionPatcher from 'vuex-action-patcher'
+import moment from 'moment'
+
+const vuexActionPatch = vuexActionPatcher(Vuex, { moment })
+
+const createStore = () => {
+  return new Vuex.Store({
+    state: () => ({
+      counter: 0
+    }),
+    mutations: {
+      increment (state) {
+        state.counter++
+      }
+    },
+    actions: {
+        getDate ({ moment }) {
+            console.log(moment().calendar())
+        }
+    },
+    plugins: [vuexActionPatch]
+  })
+}
+
+export default createStore
 ```
