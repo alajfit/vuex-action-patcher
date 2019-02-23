@@ -35,13 +35,3 @@ jobs:
     - name: 'Test ➔ Build'
       install: travis_wait npm ci --verbose
       script: npm run build
-
-    - stage: documentation
-      name: 'Documentation ➔ Deploy'
-      install: travis_wait npm ci --verbose
-      script:
-        - git config --global user.email "travis@travis-ci.org"
-        - git config --global user.name "Travis CI"
-        - git config --global github.token $GITHUB_TOKEN
-        - npm run docs:build
-        - npm run docs:deploy
