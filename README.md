@@ -11,5 +11,5 @@
 ## Install
 
 ```
-npm install vuex-apollo --save
+npm install vuex-action-patcher --save
 ```
