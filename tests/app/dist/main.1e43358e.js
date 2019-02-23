@@ -10056,7 +10056,8 @@ module.exports = {
     "lint-staged": "^8.1.4",
     "parcel-bundler": "^1.11.0",
     "sass": "^1.17.2",
-    "vue-template-compiler": "^2.6.7"
+    "vue-template-compiler": "^2.6.7",
+    "yorkie": "^2.0.0"
   },
   "dependencies": {
     "moment": "^2.24.0",
