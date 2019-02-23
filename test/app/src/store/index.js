@@ -9,15 +9,18 @@ export default function () {
     return new Vuex.Store({
         state: {
             name,
-            lastTime: null
+            timeSinceStartOfDay: null
         },
         actions: {
-            SETTIME ({ commit }) {
-                console.log(commit)
+            setTime ({ commit, moment }) {
+                const timeSSOD = moment().startOf('day').fromNow()
+                commit('setTime', timeSSOD)
             }
         },
         mutations: {
-
+            setTime (state, payload) {
+                state.timeSinceStartOfDay = payload
+            }
         },
         plugins: [tools]
     })

@@ -4,30 +4,30 @@ export default function patchAction ({
     store,
     type,
     handler,
-    local
+    local,
+    tools
 }) {
     const entry = store._actions[type] || (store._actions[type] = [])
 
     if (entry.length > 0) entry.pop()
 
-    entry.push(function wrappedActionHandler (payload, cb) {
-        let res = handler({
+    entry.push((payload, cb) => {
+        let context = Object.assign({
             dispatch: local.dispatch,
             commit: local.commit,
             getters: local.getters,
             state: local.state,
             rootGetters: store.getters,
             rootState: store.state
-        }, payload, cb)
+        }, tools)
+        let res = handler(context, payload, cb)
 
         if (!utils.isPromise(res)) res = Promise.resolve(res)
-        if (store._devtoolHook) {
-            return res.catch(err => {
+        return store._devtoolHook
+            ? res.catch(err => {
                 store._devtoolHook.emit('vuex:error', err)
                 throw err
             })
-        } else {
-            return res
-        }
+            : res
     })
 }
