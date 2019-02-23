@@ -14,7 +14,7 @@
         "docs:dev": "vuepress dev docs",
         "docs:build": "vuepress build docs",
         "docs:deploy": "gh-pages -d docs/.vuepress/dist",
-        "demo": "parcel test/app/index.html --out-dir tests/app/dist",
+        "demo": "parcel test/app/index.html --out-dir test/app/dist",
         "lint": "eslint --ext .js src",
         "test": "rm -rf test/unit/coverage && jest --config=test/unit/jest.config.js",
         "release": "release-it"
