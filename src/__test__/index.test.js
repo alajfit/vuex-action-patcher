@@ -69,5 +69,19 @@ describe('Vuex Action Patcher', () => {
             comp.vm['$store']._actions.time[0]()
             expect(global.console.log).toBeCalled()
         })
+
+        it('Should expose tools on modules added later', () => {
+            store.registerModule('other', {
+                state: { name: 'other', time: null },
+                actions: { 
+                    otherTime({ moment }) {
+                        console.log(moment().subtract(1, 'days').calendar())
+                    }
+                }
+            })
+
+            comp.vm['$store']._actions.otherTime[0]()
+            expect(global.console.log).toBeCalled()
+        })
     })
 })
