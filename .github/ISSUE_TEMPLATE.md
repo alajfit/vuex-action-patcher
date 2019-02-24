@@ -1,4 +1,4 @@
-# Questions regarding how to use GraphQL
+# Questions regarding how to use Vuex
 
 We want to keep signal strong in the GitHub issue tracker – to make sure that it remains the best place to track bugs and features that affect development.
 
