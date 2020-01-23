@@ -5,8 +5,6 @@
 //
 // anything defined in a previous bundle is accessed via the
 // orig method which is the require for previous bundles
-
-// eslint-disable-next-line no-global-assign
 parcelRequire = (function (modules, cache, entry, globalName) {
   // Save the require from previous bundle to this closure if any
   var previousRequire = typeof parcelRequire === 'function' && parcelRequire;
@@ -77,8 +75,16 @@ parcelRequire = (function (modules, cache, entry, globalName) {
     }, {}];
   };
 
+  var error;
   for (var i = 0; i < entry.length; i++) {
-    newRequire(entry[i]);
+    try {
+      newRequire(entry[i]);
+    } catch (e) {
+      // Save first error but execute all entries
+      if (!error) {
+        error = e;
+      }
+    }
   }
 
   if (entry.length) {
@@ -103,6 +109,13 @@ parcelRequire = (function (modules, cache, entry, globalName) {
   }
 
   // Override the current require with this new one
+  parcelRequire = newRequire;
+
+  if (error) {
+    // throw error from earlier, _after updating parcelRequire_
+    throw error;
+  }
+
   return newRequire;
 })({"../../node_modules/vue/dist/vue.runtime.esm.js":[function(require,module,exports) {
 var global = arguments[3];
@@ -9609,7 +9622,7 @@ function getBundleURL() {
   try {
     throw new Error();
   } catch (err) {
-    var matches = ('' + err.stack).match(/(https?|file|ftp):\/\/[^)\n]+/g);
+    var matches = ('' + err.stack).match(/(https?|file|ftp|chrome-extension|moz-extension):\/\/[^)\n]+/g);
 
     if (matches) {
       return getBaseURL(matches[0]);
@@ -9620,7 +9633,7 @@ function getBundleURL() {
 }
 
 function getBaseURL(url) {
-  return ('' + url).replace(/^((?:https?|file|ftp):\/\/.+)\/[^/]+$/, '$1') + '/';
+  return ('' + url).replace(/^((?:https?|file|ftp|chrome-extension|moz-extension):\/\/.+)\/[^/]+$/, '$1') + '/';
 }
 
 exports.getBundleURL = getBundleURLCached;
@@ -9954,14 +9967,14 @@ var _default = {
   computed: _extends({}, (0, _vuex.mapState)(['name', 'timeSinceStartOfDay']))
 };
 exports.default = _default;
-        var $eaebff = exports.default || module.exports;
+        var $2ce8f0 = exports.default || module.exports;
       
-      if (typeof $eaebff === 'function') {
-        $eaebff = $eaebff.options;
+      if (typeof $2ce8f0 === 'function') {
+        $2ce8f0 = $2ce8f0.options;
       }
     
         /* template */
-        Object.assign($eaebff, (function () {
+        Object.assign($2ce8f0, (function () {
           var render = function() {
   var _vm = this
   var _h = _vm.$createElement
@@ -9996,9 +10009,9 @@ render._withStripped = true
         if (api.compatible) {
           module.hot.accept();
           if (!module.hot.data) {
-            api.createRecord('$eaebff', $eaebff);
+            api.createRecord('$2ce8f0', $2ce8f0);
           } else {
-            api.reload('$eaebff', $eaebff);
+            api.reload('$2ce8f0', $2ce8f0);
           }
         }
 
@@ -10012,13 +10025,13 @@ render._withStripped = true
 },{"vuex":"../../node_modules/vuex/dist/vuex.esm.js","_css_loader":"../../node_modules/parcel-bundler/src/builtins/css-loader.js","vue-hot-reload-api":"../../node_modules/vue-hot-reload-api/dist/index.js","vue":"../../node_modules/vue/dist/vue.runtime.esm.js"}],"../../package.json":[function(require,module,exports) {
 module.exports = {
   "name": "vuex-action-patcher",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "description": "Vuex - Add tools to the Action context",
   "main": "dist/vuex-action-patcher.umd.js",
   "module": "dist/vuex-action-patcher.esm.js",
   "unpkg": "dist/vuex-action-patcher.min.js",
   "scripts": {
-    "boot": "rm -rf node_modules test/app/node_modules && npm i && cd ./test/app && npm i",
+    "boot": "rm -rf node_modules && npm i",
     "build:browser": "parcel build src/index.js --out-dir dist --out-file vuex-action-patcher.min.js --target browser",
     "build:es": "parcel build src/index.js --out-dir dist --out-file vuex-action-patcher.esm.js --target electron",
     "build:umd": "parcel build src/index.js --out-dir dist --out-file vuex-action-patcher.umd.js --target node",
@@ -10047,6 +10060,7 @@ module.exports = {
   "homepage": "https://github.com/alajfit/vuex-action-patcher#readme",
   "devDependencies": {
     "@vue/component-compiler-utils": "^2.6.0",
+    "@vue/test-utils": "^1.0.0-beta.29",
     "babel-core": "^6.26.3",
     "babel-eslint": "^10.0.1",
     "babel-jest": "^24.1.0",
@@ -10062,13 +10076,17 @@ module.exports = {
     "jest": "^24.1.0",
     "lint-staged": "^8.1.4",
     "moment": "^2.24.0",
-    "parcel-bundler": "^1.11.0",
+    "node-sass": "^4.13.1",
+    "parcel-bundler": "^1.12.4",
     "release-it": "^10.1.0",
     "sass": "^1.17.2",
+    "sass-loader": "^7.1.0",
     "vue": "^2.6.7",
     "vue-hot-reload-api": "^2.3.3",
     "vue-template-compiler": "^2.6.7",
+    "vuepress": "^0.14.8",
     "vuex": "^3.1.0",
+    "webpack": "4.28.4",
     "yorkie": "^2.0.0"
   },
   "peerDependencies": {
@@ -10205,14 +10223,15 @@ var _utils = _interopRequireDefault(require("./utils"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
 /**
  * @name vuexActionPatcher
  * @desc Patch the main state and all registered submodules
  * @param tools An { object } of tools to be added to the Vuex context
  */
-function vuexActionPatcher(Vuex) {
-  var tools = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
-  return function (store) {
+function vuexActionPatcher(Vuex, tools) {
+  return _typeof(Vuex) === 'object' && Vuex.Store && _typeof(tools) === 'object' ? function (store) {
     // Taking a copy of the original registerModule function
     var copyRegisterModule = Vuex.Store.prototype.registerModule; // Patch the Core Module
 
@@ -10234,6 +10253,8 @@ function vuexActionPatcher(Vuex) {
         tools: tools
       });
     };
+  } : function (store) {
+    throw new Error(_typeof(Vuex) !== 'object' || !Vuex.Store ? 'Vuex must be passed as the first argument' : 'Utils must be passed in an object as the second argument');
   };
 }
 },{"./utils":"../../src/utils/index.js"}],"../../node_modules/moment/moment.js":[function(require,module,exports) {
@@ -14931,26 +14952,47 @@ function Module(moduleName) {
 }
 
 module.bundle.Module = Module;
+var checkedAssets, assetsToAccept;
 var parent = module.bundle.parent;
 
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "50909" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "65123" + '/');
 
   ws.onmessage = function (event) {
+    checkedAssets = {};
+    assetsToAccept = [];
     var data = JSON.parse(event.data);
 
     if (data.type === 'update') {
-      console.clear();
-      data.assets.forEach(function (asset) {
-        hmrApply(global.parcelRequire, asset);
-      });
+      var handled = false;
       data.assets.forEach(function (asset) {
         if (!asset.isNew) {
-          hmrAccept(global.parcelRequire, asset.id);
+          var didAccept = hmrAcceptCheck(global.parcelRequire, asset.id);
+
+          if (didAccept) {
+            handled = true;
+          }
         }
+      }); // Enable HMR for CSS by default.
+
+      handled = handled || data.assets.every(function (asset) {
+        return asset.type === 'css' && asset.generated.js;
       });
+
+      if (handled) {
+        console.clear();
+        data.assets.forEach(function (asset) {
+          hmrApply(global.parcelRequire, asset);
+        });
+        assetsToAccept.forEach(function (v) {
+          hmrAcceptRun(v[0], v[1]);
+        });
+      } else if (location.reload) {
+        // `location` global exists in a web worker context but lacks `.reload()` function.
+        location.reload();
+      }
     }
 
     if (data.type === 'reload') {
@@ -15038,7 +15080,7 @@ function hmrApply(bundle, asset) {
   }
 }
 
-function hmrAccept(bundle, id) {
+function hmrAcceptCheck(bundle, id) {
   var modules = bundle.modules;
 
   if (!modules) {
@@ -15046,9 +15088,27 @@ function hmrAccept(bundle, id) {
   }
 
   if (!modules[id] && bundle.parent) {
-    return hmrAccept(bundle.parent, id);
+    return hmrAcceptCheck(bundle.parent, id);
   }
 
+  if (checkedAssets[id]) {
+    return;
+  }
+
+  checkedAssets[id] = true;
+  var cached = bundle.cache[id];
+  assetsToAccept.push([bundle, id]);
+
+  if (cached && cached.hot && cached.hot._acceptCallbacks.length) {
+    return true;
+  }
+
+  return getParents(global.parcelRequire, id).some(function (id) {
+    return hmrAcceptCheck(global.parcelRequire, id);
+  });
+}
+
+function hmrAcceptRun(bundle, id) {
   var cached = bundle.cache[id];
   bundle.hotData = {};
 
@@ -15073,10 +15133,6 @@ function hmrAccept(bundle, id) {
 
     return true;
   }
-
-  return getParents(global.parcelRequire, id).some(function (id) {
-    return hmrAccept(global.parcelRequire, id);
-  });
 }
 },{}]},{},["../../node_modules/parcel-bundler/src/builtins/hmr-runtime.js","src/main.js"], null)
-//# sourceMappingURL=/main.1e43358e.map
+//# sourceMappingURL=/main.1e43358e.js.map
